@@ -1,5 +1,5 @@
 <div>
-  <h1>Belman-Ford algorithm in NetworX</h1>
+  <h1>Belman-Ford algorithm in NetworkX</h1>
   <H2>How to find a cycle with a product of weights < 1:<H2>
     <ul>
       <li>turn each weight into its logarithm.</li>
