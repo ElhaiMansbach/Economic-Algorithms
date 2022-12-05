@@ -12,16 +12,19 @@ def negative_cycle_graph(G):
     for v in G:
         try:
             negative_cycle = nx.find_negative_cycle(G, v)
-            print("There is a negative cycle in the graph: =>", negative_cycle)
+            print(f"There is a negative cycle in the graph: => {negative_cycle}")
             show_graph(G)
             break
         except nx.NetworkXError:
             count += 1
-    if(count == G.order()):
+    if count == G.order():
         print("There is no negative cycles in the graph!")
 
 
 def show_graph(G):
+    """
+    Source: https://networkx.org/documentation/stable/auto_examples/drawing/plot_weighted_graph.html
+    """
     elarge = [(u, v) for (u, v, _) in G.edges(data=True)]
     # positions for all nodes - seed for reproducibility
     pos = nx.spring_layout(G, seed=7)  
