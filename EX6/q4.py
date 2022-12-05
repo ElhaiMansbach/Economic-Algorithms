@@ -2,13 +2,13 @@ import math
 import networkx as nx
 import matplotlib.pyplot as plt
 
-def negative_circle_graph(G):
+def negative_cycle_graph(G):
     count = 0
     # Converts each weight to its logarithm
     for u, v, weight in G.edges.data('weight'):
         G.add_edge(u, v, weight=math.log2(weight))
 
-    # Checking if there is a negative circle in the graph
+    # Checking if there is a negative cycle in the graph
     for v in G:
         try:
             negative_cycle = nx.find_negative_cycle(G, v)
@@ -23,7 +23,8 @@ def negative_circle_graph(G):
 
 def show_graph(G):
     elarge = [(u, v) for (u, v, _) in G.edges(data=True)]
-    pos = nx.spring_layout(G, seed=7)  # positions for all nodes - seed for reproducibility
+    # positions for all nodes - seed for reproducibility
+    pos = nx.spring_layout(G, seed=7)  
 
     # nodes
     nx.draw_networkx_nodes(G, pos, node_size=300)
@@ -48,36 +49,36 @@ if __name__ == '__main__':
     # Negative Cycle
     Graph1 = nx.DiGraph()
     Graph1.add_weighted_edges_from([(0, 1, 2), (1, 4, 0.5), (4, 0, 0.5)])
-    negative_circle_graph(Graph1)
+    negative_cycle_graph(Graph1)
 
     # No Negative Cycle
     Graph2 = nx.DiGraph()
     Graph2.add_weighted_edges_from([(0, 1, 2), (1, 4, 0.5), (4, 0, 2)])
-    negative_circle_graph(Graph2)
+    negative_cycle_graph(Graph2)
 
     # Negative Cycle
     Graph3 = nx.DiGraph()
     Graph3.add_weighted_edges_from([(0, 1, 0.5), (1, 2, 2), (2, 3, 0.4), (3, 0, 2)])
-    negative_circle_graph(Graph3)
+    negative_cycle_graph(Graph3)
 
     # No Negative Cycle
     Graph4 = nx.DiGraph()
     Graph4.add_weighted_edges_from([(0, 1, 2), (4, 0, 0.5)])
-    negative_circle_graph(Graph4)
+    negative_cycle_graph(Graph4)
 
     # Negative Cycle
     Graph5 = nx.DiGraph()
     Graph5.add_weighted_edges_from([(0, 1, 2), (1, 2, 0.5), (2, 3, 0.4), (3, 0, 2), (2, 5, 4)])
-    negative_circle_graph(Graph5)
+    negative_cycle_graph(Graph5)
 
     # No Negative Cycle
     Graph6 = nx.DiGraph()
     Graph6.add_weighted_edges_from([(0, 1, 2), (1, 0, 0.5)])
-    negative_circle_graph(Graph6)
+    negative_cycle_graph(Graph6)
 
     # Negative Cycle
     Graph7 = nx.DiGraph()
     Graph7.add_weighted_edges_from([(0, 1, 1), (1, 0, 0.5)])
-    negative_circle_graph(Graph7)
+    negative_cycle_graph(Graph7)
 
 
