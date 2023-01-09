@@ -1,7 +1,7 @@
 <div>
   <h1>Budget calculation</h1>
     <ul>
-      <li>Calculation of the budget distribution using the generalized median algorithm with linear increasing functions.</li>
+      <li>Calculating the budget distribution using a generalized median algorithm with linear increasing functions.</li>
       <li>Checking the distribution budget that is fair to the groups.</li>
     </ul>
   <h3>Tests:</h3>
